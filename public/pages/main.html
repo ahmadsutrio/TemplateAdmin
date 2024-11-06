@@ -16,8 +16,9 @@
 <body>
     <section class="flex font-poppins h-screen w-full relative ">
         <!-- Sidebar -->
-        <aside class="border md:flex md:static bg-white fixed bottom-0 top-0 left-0 flex flex-col py-3 items-center text-gray-700 w-64" @click.outside="toggleSidebar" x-show="isOpenSidebar">
-            <div class="logo flex items-center w-52 gap-3  ">
+        <aside class="border z-50 md:flex md:static top-0 bg-white flex-shrink-0 fixed inset-y-0 left-0 flex flex-col py-3 items-center text-gray-700 w-64 md:w-72" :class="{'block': isOpenSidebar, 'hidden': !isOpenSidebar}" 
+        >
+            <div class="logo flex items-center w-52 gap-3 ">
                 <div class="icon flex justify-center items-center size-10 rounded-lg bg-purple-400">
                     <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"
                         class="size-6">
@@ -166,12 +167,15 @@
             </ul>
         </aside>
         <!-- End Sidebar -->
+         <!-- Backdrop -->
+          <div class="absolute top-0 left-0 z-10 right-0 bottom-0 bg-black/50 md:hidden" @click="toggleSidebar"   x-show="isOpenSidebar"></div>
+          <!-- End Backdrop -->
         <!-- Main -->
-        <main class="w-full " >
+        <section class="w-full overflow-y-auto  " >
             <!-- Navbar -->
-            <nav class="bg-white flex justify-between items-center px-4 shadow w-full h-16">
+            <nav class="bg-white sticky top-0 flex justify-between items-center px-4 shadow w-full h-16">
                 <!-- humberger menu -->
-               <div class="size-6 text-gray-500 cuusor-pointer" @click="toggleSidebar">
+               <div class="size-6 text-gray-500 cuusor-pointer md:hidden" @click="toggleSidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" >
                     <path
                         d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
@@ -180,7 +184,108 @@
                  <!-- end humberger menu -->
             </nav>
             <!-- End Navbar -->
-        </main>
+
+            <!-- Content -->
+             <main class="w-full overflow-y-auto grid grid-cols-12 p-3">
+                
+                <!-- Today Sales -->
+                 <div class="bg-white border col-span-12">
+                    <div class="">
+                        <h4 class="">Today's Sales</h4>
+                        <p class="">Sales Summary</p>
+                    </div>
+                    <div class="container-card grid grid-cols-12 gap-3">
+                        <div class="card col-span-6 lg:col-span-3 bg-red-300/30 rounded-lg ">
+                            <ul class="icon-card p-5 ">
+                                <li class="icon bg-red-400 size-10 flex justify-center items-center rounded-full">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M3 1C1.89543 1 1 1.89545 1 3V17C1 18.1046 1.89543 19 3 19H17C18.1046 19 19 18.1046 19 17V3C19 1.89545 18.1046 1 17 1H3ZM6 11C6 10.4477 5.55228 10 5 10C4.44772 10 4 10.4477 4 11V15C4 15.5523 4.44772 16 5 16C5.55228 16 6 15.5523 6 15V11ZM10 7C10.5523 7 11 7.44769 11 8V15C11 15.5523 10.5523 16 10 16C9.44772 16 9 15.5523 9 15V8C9 7.44769 9.44772 7 10 7ZM16 5C16 4.44769 15.5523 4 15 4C14.4477 4 14 4.44769 14 5V15C14 15.5523 14.4477 16 15 16C15.5523 16 16 15.5523 16 15V5Z"
+                                            fill="white" />
+                                    </svg>
+                                </li>
+                                <li class="price">
+                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                </li>
+                                <li class="information">
+                                    <p class="text-md font-light">Total Sales</p>
+                                </li>
+                                <li class="">
+                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                </li>
+                            </ul>
+                         </div>
+                        <div class="card col-span-6 lg:col-span-3 bg-yellow-300/30 rounded-lg ">
+                            <ul class="icon-card p-5 ">
+                                <li class="icon bg-orange-300 size-10 flex justify-center items-center rounded-full">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M4 6C4 3.79086 5.79086 2 8 2H14V6C14 8.20914 15.7909 10 18 10H20V18C20 20.2091 18.2091 22 16 22H8C5.79086 22 4 20.2091 4 18V6ZM8 11C7.44772 11 7 11.4477 7 12C7 12.5523 7.44772 13 8 13H10C10.5523 13 11 12.5523 11 12C11 11.4477 10.5523 11 10 11H8ZM8 15C7.44772 15 7 15.4477 7 16C7 16.5523 7.44772 17 8 17H12C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15H8ZM16.6818 4.19879L16.5509 6.16288C16.5106 6.76656 17.0115 7.26743 17.6152 7.22718L19.5792 7.09624C20.4365 7.03909 20.8274 5.99887 20.2198 5.39135L18.3867 3.5582C17.7792 2.95068 16.7389 3.34153 16.6818 4.19879Z"
+                                        fill="white" />
+                                </svg>
+
+                                </li>
+                                <li class="price">
+                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                </li>
+                                <li class="information">
+                                    <p class="text-md font-light">Total Sales</p>
+                                </li>
+                                <li class="">
+                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                </li>
+                            </ul>
+                         </div>
+                        <div class="card col-span-6 lg:col-span-3 bg-green-300/30 rounded-lg ">
+                            <ul class="icon-card p-5 ">
+                                <li class="icon bg-green-400 size-10 flex justify-center items-center rounded-full">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M16.6261 5.26532L13.3263 5.73673C12.8222 5.80875 12.4103 6.04904 12.1162 6.38114L4.41674 14.0806C3.6357 14.8616 3.63566 16.1279 4.41674 16.909L7.24517 19.7374C8.02625 20.5185 9.29255 20.5185 10.0736 19.7374L17.773 12.038C18.1051 11.7439 18.3454 11.332 18.4174 10.8279L18.8888 7.52803C19.0775 6.20815 17.946 5.07671 16.6261 5.26532ZM14.3162 9.83793C14.7067 10.2284 15.3399 10.2285 15.7305 9.83793C16.121 9.4474 16.1209 8.81421 15.7305 8.42371C15.34 8.03322 14.7068 8.03319 14.3162 8.42372C13.9257 8.81424 13.9257 9.44743 14.3162 9.83793Z"
+                                    fill="white" />
+                            </svg>
+
+                                </li>
+                                <li class="price">
+                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                </li>
+                                <li class="information">
+                                    <p class="text-md font-light">Total Sales</p>
+                                </li>
+                                <li class="">
+                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                </li>
+                            </ul>
+                         </div>
+                        <div class="card col-span-6 lg:col-span-3 bg-purple-300/30 rounded-lg ">
+                            <ul class="icon-card p-5 ">
+                                <li class="icon bg-purple-400 size-10 flex justify-center items-center rounded-full">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M14 8C14 10.2091 12.2091 12 10 12C7.79086 12 6 10.2091 6 8C6 5.79086 7.79086 4 10 4C12.2091 4 14 5.79086 14 8ZM10 13C6.13401 13 3 15.2386 3 18C3 19.1046 3.89543 20 5 20H15C16.1046 20 17 19.1046 17 18C17 15.2386 13.866 13 10 13ZM18 6C18.5523 6 19 6.44772 19 7V8H20C20.5523 8 21 8.44772 21 9C21 9.55228 20.5523 10 20 10H19V11C19 11.5523 18.5523 12 18 12C17.4477 12 17 11.5523 17 11V10H16C15.4477 10 15 9.55228 15 9C15 8.44771 15.4477 8 16 8H17V7C17 6.44772 17.4477 6 18 6Z"
+                                    fill="white" />
+                            </svg>
+
+                                </li>
+                                <li class="price">
+                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                </li>
+                                <li class="information">
+                                    <p class="text-md font-light">Total Sales</p>
+                                </li>
+                                <li class="">
+                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                </li>
+                            </ul>
+                         </div>
+                    </div>
+                 </div>
+                 <div class="bg-white border col-span-12">a</div>
+                 <!-- End Today Sales -->
+
+             </main>
+             <!-- End Content -->
+        </section>
         <!-- End Main -->
     </section>
 </body>
