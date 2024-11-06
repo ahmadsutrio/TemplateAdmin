@@ -7,6 +7,10 @@ function data(){
         isUsersProfileMenu : false,
         toggleUsersProfileMenu(){
             this.isUsersProfileMenu = !this.isUsersProfileMenu
+        },
+        isOpenSidebar : true,
+        toggleSidebar(){
+            this.isOpenSidebar = !this.isOpenSidebar
         }
     }
 }
