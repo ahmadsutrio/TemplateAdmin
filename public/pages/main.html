@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -14,11 +17,11 @@
 </head>
 
 <body>
-    <section class="flex font-poppins h-screen w-full relative ">
+    <section class="flex font-poppins h-screen w-full relative bg-[#F9FAFB] ">
         <!-- Sidebar -->
-        <aside class="border z-50 md:flex md:static top-0 bg-white flex-shrink-0 fixed inset-y-0 left-0 flex flex-col py-3 items-center text-gray-700 w-64 md:w-72" :class="{'block': isOpenSidebar, 'hidden': !isOpenSidebar}" 
+        <aside class="border z-50 md:flex md:static top-0 bg-white flex-shrink-0 fixed inset-y-0 left-0 flex flex-col py-3 items-center text-gray-700 md:w-64" :class="{'block': isOpenSidebar, 'hidden': !isOpenSidebar}" 
         >
-            <div class="logo flex items-center w-52 gap-3 ">
+            <div class="logo flex items-center w-52 gap-3  ">
                 <div class="icon flex justify-center items-center size-10 rounded-lg bg-purple-400">
                     <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"
                         class="size-6">
@@ -173,7 +176,7 @@
         <!-- Main -->
         <section class="w-full overflow-y-auto  " >
             <!-- Navbar -->
-            <nav class="bg-white sticky top-0 flex justify-between items-center px-4 shadow w-full h-16">
+            <nav class="bg-white shadow-md sticky top-0 flex justify-between items-center px-4  w-full h-16">
                 <!-- humberger menu -->
                <div class="size-6 text-gray-500 cuusor-pointer md:hidden" @click="toggleSidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" >
@@ -186,15 +189,15 @@
             <!-- End Navbar -->
 
             <!-- Content -->
-             <main class="w-full overflow-y-auto grid grid-cols-12 p-3">
+             <main class="w-full overflow-y-auto grid grid-cols-12 p-3 max-w-[1440px] mx-auto ">
                 
                 <!-- Today Sales -->
-                 <div class="bg-white border col-span-12">
-                    <div class="">
-                        <h4 class="">Today's Sales</h4>
-                        <p class="">Sales Summary</p>
+                 <div class="bg-white border rounded-xl lg:p-8 p-5  col-span-12 ">
+                    <div class="lg:mb-8 mb-3">
+                        <h4 class="lg:my-2 my-1 font-semibold lg:text-xl text-lg">Today's Sales</h4>
+                        <p class="lg:text-lg font-light ">Sales Summary</p>
                     </div>
-                    <div class="container-card grid grid-cols-12 gap-3">
+                    <div class="container-card grid grid-cols-12 gap-3 lg:gap-5">
                         <div class="card col-span-6 lg:col-span-3 bg-red-300/30 rounded-lg ">
                             <ul class="icon-card p-5 ">
                                 <li class="icon bg-red-400 size-10 flex justify-center items-center rounded-full">
@@ -205,13 +208,13 @@
                                     </svg>
                                 </li>
                                 <li class="price">
-                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                    <p class="text-lg font-bold lg:text-2xl lg:mt-4 mt-2">50</p>
                                 </li>
                                 <li class="information">
-                                    <p class="text-md font-light">Total Sales</p>
+                                    <p class="text-md font-light lg:text-lg lg:my-1 truncate ">Total Sales</p>
                                 </li>
                                 <li class="">
-                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                    <p class="text-sm text-blue-500 ">+8% from yesterday</p>
                                 </li>
                             </ul>
                          </div>
@@ -226,13 +229,13 @@
 
                                 </li>
                                 <li class="price">
-                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                    <p class="text-lg font-bold lg:text-2xl lg:mt-4 mt-2">300</p>
                                 </li>
                                 <li class="information">
-                                    <p class="text-md font-light">Total Sales</p>
+                                    <p class="text-md font-light lg:text-lg lg:my-1 truncate">Total Orders</p>
                                 </li>
                                 <li class="">
-                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                    <p class="text-sm text-blue-500 ">+8% from yesterday</p>
                                 </li>
                             </ul>
                          </div>
@@ -247,13 +250,13 @@
 
                                 </li>
                                 <li class="price">
-                                    <p class="text-lg font-bold">Rp 1.000.000</p>
+                                    <p class="text-lg font-bold lg:text-2xl lg:mt-4 mt-2">5</p>
                                 </li>
                                 <li class="information">
-                                    <p class="text-md font-light">Total Sales</p>
+                                    <p class="text-md font-light lg:text-lg lg:my-1 truncate">Product Sold</p>
                                 </li>
                                 <li class="">
-                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
+                                    <p class="text-sm text-blue-500 ">+8% from yesterday</p>
                                 </li>
                             </ul>
                          </div>
@@ -267,20 +270,19 @@
                             </svg>
 
                                 </li>
-                                <li class="price">
-                                    <p class="text-lg font-bold">Rp 1.000.000</p>
-                                </li>
-                                <li class="information">
-                                    <p class="text-md font-light">Total Sales</p>
-                                </li>
-                                <li class="">
-                                    <p class="text-sm text-blue-500">+8% from yesterday</p>
-                                </li>
+                        <li class="price">
+                            <p class="text-lg font-bold lg:text-2xl lg:mt-4 mt-2">8</p>
+                        </li>
+                        <li class="information">
+                            <p class="text-md font-light lg:text-lg lg:my-1 truncate">New Customers</p>
+                        </li>
+                        <li class="">
+                            <p class="text-sm text-blue-500 ">+8% from yesterday</p>
+                        </li>
                             </ul>
                          </div>
                     </div>
                  </div>
-                 <div class="bg-white border col-span-12">a</div>
                  <!-- End Today Sales -->
 
              </main>
